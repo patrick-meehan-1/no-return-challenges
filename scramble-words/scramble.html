@@ -27,6 +27,21 @@
             text-align: center;
             padding: 1em;
         }
+        
+        .my-logo {
+            height: 50px;
+            width: 50px;
+            display: inline-block;
+            /* Other styles here */
+        }
+        
+        .title {
+            text-shadow: 5px 5px 10px #4f3321;
+            background: #000000;
+            background: linear-gradient(to top, #000000 0%, #8A480F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 
 </head>
@@ -35,6 +50,8 @@
 
     <div class="card mx-auto text-center" style="width: 18rem;">
         <div id="game-container">
+            <h4 class="title">Raiders.org <img class="my-logo" src="logo.png" alt="header picture"></h4>
+
             <h1>Word Unscramble Game</h1>
             <form id="start-form">
                 <label for="player-name">Enter your name:</label>
