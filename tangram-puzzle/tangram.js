@@ -3,18 +3,9 @@ document.getElementById("start-form").addEventListener("submit", function(event)
     startGame();
 });
 
-function getRandomWord() {
-    const words = [
-        "Abandon", "Ability", "Absence", "Academy", "Account", "Accuse",
-        "Worship", "Worthy", "Yearn", "Yield", "Zenith"
-    ];
-
-    return words[Math.floor(Math.random() * words.length)];
-}
-
-function scrambleWord(word) {
-    return word.split('').sort(() => Math.random() - 0.5).join('');
-}
+const tangrams = [
+    "whale", "elephant", "dog", "cat", "lion", "seal", "camel", "panda", "horse", "crab"
+];
 
 function startGame() {
     const playerName = document.getElementById("player-name").value;
@@ -26,13 +17,13 @@ function startGame() {
     const gameOutput = document.getElementById("game-output");
     gameOutput.innerHTML = "";
 
+
     function displayWord() {
         count++;
-        const word = getRandomWord();
-        const scrambledWord = scrambleWord(word);
+        const word = tangrams[count - 1];
 
-        gameOutput.innerHTML = `<p>Word ${count}/10</p>`;
-        gameOutput.innerHTML += `<p class="card-header">${scrambledWord}</p>`;
+        gameOutput.innerHTML = `<p>Puzzle ${count}/10</p>`;
+        gameOutput.innerHTML += `<img src="tangrams/${count}.PNG" alt="Tangram ${count}">`;
 
         const inputLabel = document.createElement("label");
         inputLabel.textContent = "Enter your guess:";
@@ -53,11 +44,8 @@ function startGame() {
         submitButton.addEventListener("click", function() {
             const userGuess = inputField.value;
             if (userGuess && userGuess.toLowerCase() === word.toLowerCase()) {
-                gameOutput.innerHTML += `<p>Congratulations ${playerName}! You unscrambled the word!</p>`;
                 score++;
-            } else {
-                gameOutput.innerHTML += `<p>Incorrect ${playerName}. The word was: ${word}</p>`;
-            }
+            } else {}
             inputLabel.remove();
             inputField.remove();
             submitButton.remove();
